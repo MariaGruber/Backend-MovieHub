@@ -1,0 +1,4 @@
+.env.development
+.env.example
+.env.production
+node_modules
