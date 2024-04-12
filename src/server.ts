@@ -1,9 +1,13 @@
-import express from "express";
-import userRouter from "./routes/user.routes";
+import express from "express"
+import userRouter from "./routes/user.routes"
+import movieRouter from "./routes/movies.routes"
+import genreRouter from "./routes/genre.routes"
 
-const app = express();
+const app = express()
 
-app.use(express.json());
-app.use("/user", userRouter);
+app.use(express.json())
+app.use("/user", userRouter)
+app.use("/movies", movieRouter)
+app.use("/genre", genreRouter)
 
-export default app;
+export default app

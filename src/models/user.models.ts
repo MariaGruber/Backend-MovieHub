@@ -5,6 +5,7 @@ interface UserSchema {
   name: string;
   email: string;
   password: string;
+  movies: string[];
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -24,6 +25,9 @@ const userSchema = new Schema<UserSchema>(
       type: String,
       require: true,
     },
+    movies: [{
+        type: Schema.Types.ObjectId, ref:"movie"
+    }]
   },
   { timestamps: true },
 );

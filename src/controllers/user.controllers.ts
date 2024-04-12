@@ -2,7 +2,7 @@ import { Request, Response } from "express"
 import UserModel from "../models/user.models"
 
 export const getAllUsers = async (req:Request, res:Response) => {
-    try { const allUsers = await UserModel.find()
+    try { const allUsers = await UserModel.find().populate("movies")
         res.status(200).send(allUsers)
         
     } catch (error) {
