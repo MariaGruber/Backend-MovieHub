@@ -1,5 +1,8 @@
 import app from "./server"
 import config from "./config/config"
+import dotevn from 'dotenv'
+dotevn.config()
+import './config/cloudinaryconfig'
 import connect from "./db/db"
 
 console.log("==>", config)

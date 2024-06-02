@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose'
 
 interface IMovieSchema {
   name: string
-  image: string
+  image: string | File
   score: number,
   genre?: string[]
   synopsis?: string

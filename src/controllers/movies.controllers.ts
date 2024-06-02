@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import MovieModel from '../models/movies.models'
 import UserModel from '../models/user.models'
 
+
 export const getAllMovies = async (req: Request, res: Response) => {
   try {
     const allMovies = await MovieModel.find().populate('createdBy', 'name')
@@ -12,7 +13,8 @@ export const getAllMovies = async (req: Request, res: Response) => {
 }
 
 export const createMovie = async (req: Request, res: Response) => {
-  const { name, image, score, genre, synopsis } = req.body
+  const { name, score, genre, synopsis } = req.body
+  const image = req.file?.path
   const { userId } = req.params
   const createdBy = req.params.userId
 
@@ -27,7 +29,8 @@ export const createMovie = async (req: Request, res: Response) => {
 }
 
 export const updateMovie = async (req: Request, res: Response) => {
-  const { name, image, url, score, synopsis } = req.body
+  const { name, url, score, synopsis } = req.body
+  const image = req.file?.path
   const { movieId } = req.params
 
   try {
