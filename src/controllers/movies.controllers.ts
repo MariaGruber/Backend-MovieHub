@@ -11,12 +11,23 @@ export const getAllMovies = async (req: Request, res: Response) => {
     res.status(400).send(error)
   }
 }
+export const getMovieById = async (req: Request, res: Response) => {
+    const _id = req.params
+
+    try {
+      const movie = await MovieModel.findById(_id)
+      res.status(201).send(movie)
+    } catch (error) {
+      res.status(400).send(error)
+    }
+  }
 
 export const createMovie = async (req: Request, res: Response) => {
   const { name, score, genre, synopsis } = req.body
   const image = req.file?.path
   const { userId } = req.params
   const createdBy = req.params.userId
+
 
   try {
     const movie = await MovieModel.create({ name, image, score, genre, synopsis, createdBy })
